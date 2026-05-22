@@ -10,7 +10,7 @@ const db = cloud.database();
 const _ = db.command;
 
 // ⚠️ 改成你的 GitHub 仓库地址
-const DATA_URL = 'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/data/latest_prices.json';
+const DATA_URL = 'https://raw.githubusercontent.com/gagayjj/flightclaw/main/data/latest_prices.json';
 
 /** 批量插入（每次最多 100 条） */
 async function batchInsert(collection, items) {
