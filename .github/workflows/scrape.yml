@@ -1,0 +1,44 @@
+name: 航班价格抓取 & 云同步
+
+on:
+  schedule:
+    # 每 4 小时运行一次（UTC 时间，+8 小时 = 北京时间）
+    - cron: '0 */4 * * *'
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 安装依赖
+        run: |
+          pip install playwright sqlalchemy requests amadeus beautifulsoup4
+
+      - name: 安装 Playwright 浏览器
+        run: |
+          python -m playwright install chromium
+
+      - name: 设置 PYTHONPATH
+        run: |
+          echo "PYTHONPATH=${{ github.workspace }}" >> $GITHUB_ENV
+
+      - name: 执行抓取 & 保存 JSON
+        run: |
+          python backend/cloud_runner.py
+
+      - name: 提交数据到仓库
+        run: |
+          git config user.name "flight-bot"
+          git config user.email "bot@github.com"
+          git add data/latest_prices.json
+          git diff --cached --quiet || git commit -m "auto: update flight prices $(date +'%Y-%m-%d %H:%M')"
+          git push
