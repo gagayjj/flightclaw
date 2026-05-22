@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "往返比价",
+  "navigationBarBackgroundColor": "#1a73e8",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f5f5f5"
+}

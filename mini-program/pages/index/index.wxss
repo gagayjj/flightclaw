@@ -1,0 +1,72 @@
+.header-info { text-align: center; }
+.route { font-size: 36rpx; font-weight: 600; margin-bottom: 8rpx; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+.city { color: #1a73e8; }
+.arrow { margin: 0 16rpx; }
+.btn-switch-dir { margin-left: 12rpx; font-size: 22rpx; color: #666; background: #f0f0f0; border-radius: 500rpx; padding: 4rpx 16rpx; line-height: 1.8; }
+.date-range { font-size: 24rpx; color: #666; }
+.stats-row { display: flex; justify-content: space-around; margin-top: 24rpx; padding-top: 20rpx; border-top: 2rpx solid #f0f0f0; }
+.stat-item { text-align: center; }
+.stat-clickable { cursor: pointer; }
+.stat-clickable:active { opacity: 0.6; }
+.stat-num { font-size: 36rpx; font-weight: 700; display: block; }
+.stat-num.cheap { color: #c62828; }
+.stat-label { font-size: 22rpx; color: #999; }
+
+.filter-bar { display: flex; align-items: center; justify-content: space-between; padding: 16rpx 24rpx; margin: 0 16rpx; flex-wrap: wrap; }
+.filter-label { font-size: 26rpx; color: #333; display: block; overflow: hidden; text-overflow: ellipsis; }
+.filter-sep { color: #ccc; }
+
+.loading { text-align: center; padding: 80rpx 0; color: #999; font-size: 28rpx; }
+.loading-spinner { display: inline-block; width: 48rpx; height: 48rpx; border: 4rpx solid #e0e0e0; border-top-color: #1a73e8; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 16rpx; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 每日最低价 */
+.day-card { border-left: 8rpx solid #c62828; margin: 0 16rpx 16rpx; background: #fff; border-radius: 12rpx; padding: 24rpx; }
+.day-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12rpx; }
+.day-left { display: flex; flex-direction: column; }
+.day-date { font-size: 28rpx; font-weight: 600; }
+.day-source { font-size: 22rpx; color: #c62828; margin-top: 4rpx; }
+.day-price { font-size: 40rpx; font-weight: 700; color: #c62828; }
+.flight-info { }
+.flight-main { display: flex; align-items: center; gap: 8rpx; margin-bottom: 8rpx; }
+.airline { font-size: 28rpx; font-weight: 500; }
+.flight-no { font-size: 24rpx; color: #666; }
+.flight-time { display: flex; align-items: center; justify-content: space-between; }
+.time { font-size: 32rpx; font-weight: 600; }
+.duration { font-size: 22rpx; color: #999; flex: 1; text-align: center; position: relative; }
+.duration::before, .duration::after { content: ''; position: absolute; top: 50%; width: 30%; height: 2rpx; background: #e0e0e0; }
+.duration::before { left: 5%; }
+.duration::after { right: 5%; }
+.fee-row { font-size: 22rpx; color: #999; margin-top: 12rpx; padding-top: 12rpx; border-top: 2rpx solid #f0f0f0; }
+.tag { display: inline-block; font-size: 20rpx; padding: 2rpx 12rpx; border-radius: 500rpx; }
+.tag-direct { background: #e8f5e9; color: #2e7d32; }
+.tag-transfer { background: #fff3e0; color: #e65100; }
+
+/* 全部航班 */
+.section-header { display: flex; justify-content: space-between; align-items: center; padding: 24rpx 32rpx 12rpx; }
+.section-title { font-size: 28rpx; font-weight: 600; }
+.section-count { font-size: 24rpx; color: #999; }
+
+.flight-item { margin: 0 16rpx 12rpx; background: #fff; border-radius: 12rpx; padding: 20rpx 24rpx; }
+.fi-top { display: flex; align-items: center; gap: 12rpx; }
+.fi-left { flex: 0 0 auto; }
+.airline { font-size: 26rpx; font-weight: 500; display: block; }
+.flight-no { font-size: 22rpx; color: #666; }
+.fi-date { font-size: 20rpx; color: #999; margin-top: 2rpx; display: block; }
+.fi-center { flex: 1; text-align: center; }
+.fi-center .time { font-size: 28rpx; font-weight: 600; display: block; }
+.dur { font-size: 20rpx; color: #999; display: block; margin: 2rpx 0; }
+.fi-right { text-align: right; flex: 0 0 auto; }
+.price-total { font-size: 32rpx; font-weight: 700; color: #c62828; display: block; }
+.stops { font-size: 20rpx; }
+.stops.direct { color: #2e7d32; }
+.stops.transfer { color: #e65100; }
+
+.btn-book { margin-top: 12rpx; background: #FF6A00; color: #fff; border-radius: 500rpx; font-size: 26rpx; padding: 16rpx; text-align: center; width: 100%; }
+.btn-book:active { opacity: 0.8; }
+.btn-book-sm { margin-top: 8rpx; background: #FF6A00; color: #fff; border-radius: 500rpx; font-size: 24rpx; padding: 10rpx 24rpx; text-align: center; width: 100%; border: none; }
+.btn-book-sm:active { opacity: 0.8; }
+
+.empty-state { text-align: center; padding: 120rpx 0; }
+.empty-text { font-size: 28rpx; color: #999; margin-bottom: 32rpx; display: block; }
+.btn-primary { background: #1a73e8; color: #fff; border-radius: 500rpx; font-size: 28rpx; padding: 16rpx 48rpx; display: inline-block; }

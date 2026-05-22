@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/roundtrip/roundtrip",
+    "pages/subscribe/subscribe",
+    "pages/history/history",
+    "pages/webview/webview"
+  ],
+  "window": {
+    "navigationBarTitleText": "低价机票追踪",
+    "navigationBarBackgroundColor": "#1a73e8",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#1a73e8",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "低价机票",
+        "iconPath": "images/tab-flight.png",
+        "selectedIconPath": "images/tab-flight-active.png"
+      },
+      {
+        "pagePath": "pages/roundtrip/roundtrip",
+        "text": "往返比价",
+        "iconPath": "images/tab-flight.png",
+        "selectedIconPath": "images/tab-flight-active.png"
+      },
+      {
+        "pagePath": "pages/subscribe/subscribe",
+        "text": "订阅监控",
+        "iconPath": "images/tab-bell.png",
+        "selectedIconPath": "images/tab-bell-active.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "价格走势",
+        "iconPath": "images/tab-trend.png",
+        "selectedIconPath": "images/tab-trend-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

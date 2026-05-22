@@ -1,0 +1,14 @@
+{
+  "envId": "cloudbase-d7g70bhvj07f8e6dd",
+  "functionRoot": "cloudfunctions",
+  "functions": [
+    {
+      "name": "api-proxy",
+      "timeout": 15,
+      "runtime": "Nodejs18.15",
+      "handler": "index.main",
+      "ignore": ["node_modules"],
+      "params": {}
+    }
+  ]
+}

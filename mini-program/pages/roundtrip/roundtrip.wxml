@@ -1,0 +1,77 @@
+<view class="top-bar card">
+  <text class="route-title">{{directionLabel}} 往返比价</text>
+  <text class="budget-hint">预算 ≤ ¥{{budget}}</text>
+</view>
+
+<view wx:if="{{loading}}" class="loading">
+  <view class="loading-spinner"></view>
+  <text>正在计算往返方案...</text>
+</view>
+
+<!-- 预算内方案 -->
+<view wx:if="{{!loading && deals.length > 0}}" class="section-header">
+  <text class="section-title">预算内往返方案（≤¥{{budget}}）</text>
+  <text class="section-count">共 {{deals.length}} 个</text>
+</view>
+
+<view wx:for="{{deals}}" wx:key="id" class="deal-card card">
+  <view class="deal-header {{item.within_budget ? 'budget-ok' : ''}}">
+    <text class="deal-total">¥{{util.formatPrice(item.total_price)}}</text>
+    <text class="deal-stay">{{item.stay_days}}天行程</text>
+    <text wx:if="{{item.within_budget}}" class="tag-budget">预算内</text>
+  </view>
+
+  <view class="deal-leg">
+    <view class="leg-label">
+      <text class="leg-icon">▶</text>
+      <text class="leg-route">去程 {{item.outbound_date}}</text>
+      <text class="leg-price">¥{{item.outbound.price}}</text>
+    </view>
+    <view class="leg-flight">
+      <text class="flight-info">{{item.outbound.airline}} {{item.outbound.flight}}</text>
+      <text class="flight-time">{{item.outbound.dep_time}} → {{item.outbound.arr_time}}</text>
+    </view>
+    <view class="leg-btns">
+      <button class="btn-view" bindtap="onViewOutbound" data-date="{{item.outbound_date}}">查看</button>
+      <button class="btn-book-leg" bindtap="onPlatformBook"
+        data-url="{{util.getBookingUrl('ctrip', '深圳', '北京', item.outbound_date, item.outbound.flight)}}"
+        data-flight_date="{{item.outbound_date}}"
+        data-origin="深圳" data-destination="北京"
+        data-source="ctrip"
+        data-platform="携程">预订</button>
+    </view>
+  </view>
+
+  <view class="deal-leg">
+    <view class="leg-label">
+      <text class="leg-icon">◀</text>
+      <text class="leg-route">回程 {{item.return_date}}</text>
+      <text class="leg-price">¥{{item.return.price}}</text>
+    </view>
+    <view class="leg-flight">
+      <text class="flight-info">{{item.return.airline}} {{item.return.flight}}</text>
+      <text class="flight-time">{{item.return.dep_time}} → {{item.return.arr_time}}</text>
+    </view>
+    <view class="leg-btns">
+      <button class="btn-view" bindtap="onViewReturn" data-date="{{item.return_date}}">查看</button>
+      <button class="btn-book-leg" bindtap="onPlatformBook"
+        data-url="{{util.getBookingUrl('ctrip', '北京', '深圳', item.return_date, item.return.flight)}}"
+        data-flight_date="{{item.return_date}}"
+        data-origin="北京" data-destination="深圳"
+        data-source="ctrip"
+        data-platform="携程">预订</button>
+    </view>
+  </view>
+</view>
+
+<!-- 无数据 -->
+<view wx:if="{{!loading && deals.length === 0}}" class="empty-state">
+  <text class="empty-text">暂无往返数据</text>
+  <text class="empty-hint">点击刷新扫描最新价格</text>
+  <button class="btn-primary" bindtap="onRefresh">立即扫描</button>
+</view>
+
+<!-- 刷新按钮 -->
+<view class="refresh-bar" wx:if="{{!loading && deals.length > 0}}">
+  <button class="btn-refresh" bindtap="onRefresh">重新扫描比价</button>
+</view>

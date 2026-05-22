@@ -1,0 +1,111 @@
+<!-- 首页：低价机票列表 -->
+<view class="header-info card">
+  <view class="route">
+    <text class="city">{{origin}}</text>
+    <text class="arrow"> → </text>
+    <text class="city">{{destination}}</text>
+    <button class="btn-switch-dir" bindtap="onSwitchDirection">⇄ 切换</button>
+  </view>
+  <view class="date-range">{{dateFrom}} ~ {{dateTo}} | 含税费 ≤ ¥{{maxPrice}}</view>
+  <view class="stats-row" wx:if="{{stats}}">
+    <view class="stat-item">
+      <text class="stat-num">{{stats.total_records}}</text>
+      <text class="stat-label">已监控航班</text>
+    </view>
+    <view class="stat-item stat-clickable" bindtap="onViewLowestDetail">
+      <text class="stat-num cheap">¥{{stats.lowest_price}}</text>
+      <text class="stat-label">全网最低价 ›</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.today_new}}</text>
+      <text class="stat-label">今日更新</text>
+    </view>
+  </view>
+</view>
+
+<!-- 过滤选项 -->
+<view class="filter-bar card">
+  <picker mode="date" value="{{dateFrom}}" bindchange="onDateFromChange">
+    <text class="filter-label">{{dateFrom}}</text>
+  </picker>
+  <text class="filter-sep">~</text>
+  <picker mode="date" value="{{dateTo}}" bindchange="onDateToChange">
+    <text class="filter-label">{{dateTo}}</text>
+  </picker>
+  <picker range="{{priceOptions}}" value="{{priceIndex}}" bindchange="onPriceChange">
+    <text class="filter-label">≤ ¥{{priceOptions[priceIndex]}}</text>
+  </picker>
+</view>
+
+<!-- 加载状态 -->
+<view wx:if="{{loading}}" class="loading">
+  <view class="loading-spinner"></view>
+  <text>正在加载航班数据...</text>
+</view>
+
+<!-- 每日最低价 -->
+<view wx:for="{{lowestPrices}}" wx:key="flight_date" class="day-card card">
+  <view class="day-header" bindtap="onViewDetail" data-date="{{item.flight_date}}">
+    <view class="day-left">
+      <text class="day-date">{{util.formatDate(item.flight_date)}}</text>
+      <text class="day-source">{{util.getSourceTag(item.source)}}最低</text>
+    </view>
+    <text class="day-price">{{item._priceText}}</text>
+  </view>
+  <view class="flight-info" bindtap="onViewDetail" data-date="{{item.flight_date}}">
+    <view class="flight-main">
+      <text class="airline">{{item.airline}}</text>
+      <text class="flight-no">{{item.flight_number}}</text>
+      <text class="tag {{util.getStopClass(item.stops)}}">{{util.getStopText(item.stops)}}</text>
+    </view>
+    <view class="flight-time">
+      <text class="time">{{item.departure_time}}</text>
+      <text class="duration">{{item.duration}}</text>
+      <text class="time">{{item.arrival_time}}</text>
+    </view>
+  </view>
+  <view class="fee-row" bindtap="onViewDetail" data-date="{{item.flight_date}}">{{item._feeText}}</view>
+  <button class="btn-book-sm" bindtap="onPlatformBook"
+    data-url="{{util.getBookingUrl(item.source, origin, destination, item.flight_date, item.flight_number)}}"
+    data-flight_date="{{item.flight_date}}"
+    data-flight_number="{{item.flight_number}}"
+    data-source="{{item.source}}"
+    data-platform="{{util.getSourceTag(item.source)}}">去{{util.getSourceTag(item.source)}}预订 →</button>
+</view>
+
+<!-- 全部航班 -->
+<view class="section-header" wx:if="{{allPrices.length > 0}}">
+  <text class="section-title">全部航班</text>
+  <text class="section-count">共 {{allPrices.length}} 个</text>
+</view>
+
+<view wx:for="{{allPrices}}" wx:for-item="ft" wx:for-index="i" wx:key="id" class="flight-item card">
+  <view class="fi-top">
+    <view class="fi-left">
+      <text class="airline">{{ft.airline}}</text>
+      <text class="flight-no">{{ft.flight_number}}</text>
+      <text class="fi-date">{{ft.flight_date}}</text>
+    </view>
+    <view class="fi-center">
+      <text class="time">{{ft.departure_time}}</text>
+      <text class="dur">{{ft.duration}}</text>
+      <text class="time">{{ft.arrival_time}}</text>
+    </view>
+    <view class="fi-right">
+      <text class="price-total">{{ft._priceText}}</text>
+      <text class="stops {{ft.stops === 0 ? 'direct' : 'transfer'}}">{{ft.stops === 0 ? '直飞' : ft.stops + '转'}}</text>
+    </view>
+  </view>
+  <button class="btn-book" bindtap="onPlatformBook"
+    data-url="{{util.getBookingUrl(ft.source, origin, destination, ft.flight_date, ft.flight_number)}}"
+    data-flight_date="{{ft.flight_date}}"
+    data-flight_number="{{ft.flight_number}}"
+    data-source="{{ft.source}}"
+    data-platform="{{util.getSourceTag(ft.source)}}">去{{util.getSourceTag(ft.source)}}预订</button>
+</view>
+
+<!-- 空状态 -->
+<view wx:if="{{!loading && allPrices.length === 0}}" class="empty-state">
+  <text class="empty-text">暂无符合条件的低价机票</text>
+  <button class="btn-primary" bindtap="onRefresh">点击刷新</button>
+</view>

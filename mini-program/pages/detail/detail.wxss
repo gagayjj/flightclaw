@@ -1,0 +1,56 @@
+.container { padding: 16rpx; }
+
+.card { background: #fff; border-radius: 12rpx; padding: 24rpx; margin-bottom: 16rpx; }
+
+/* 页面标题 */
+.page-header { text-align: center; }
+.page-title { font-size: 32rpx; font-weight: 600; display: block; }
+.page-date { font-size: 26rpx; color: #999; margin-top: 4rpx; display: block; }
+
+/* 最低价横幅 */
+.lowest-banner { background: linear-gradient(135deg, #c62828, #e53935); border-radius: 12rpx; padding: 24rpx; margin-bottom: 16rpx; display: flex; justify-content: space-between; align-items: center; color: #fff; }
+.lb-label { font-size: 22rpx; opacity: 0.9; display: block; }
+.lb-price { font-size: 48rpx; font-weight: 700; display: block; margin: 4rpx 0; }
+.lb-fee { font-size: 20rpx; opacity: 0.8; display: block; }
+.lb-right { text-align: right; }
+.lb-airline { font-size: 28rpx; font-weight: 500; display: block; }
+.lb-flight { font-size: 24rpx; opacity: 0.9; display: block; }
+.lb-time { font-size: 22rpx; opacity: 0.8; display: block; margin-top: 4rpx; }
+.lb-book-btn { display: inline-block; font-size: 22rpx; color: #fff; background: rgba(255,255,255,0.2); border-radius: 500rpx; padding: 4rpx 16rpx; margin-top: 6rpx; }
+.lowest-banner:active { opacity: 0.85; }
+
+.section-title { font-size: 28rpx; font-weight: 600; margin-bottom: 12rpx; padding: 0 8rpx; }
+
+/* 航班卡片 */
+.flight-card { }
+.fc-top { display: flex; align-items: flex-start; gap: 12rpx; margin-bottom: 16rpx; }
+.fc-rank { flex: 0 0 auto; }
+.rank-badge { background: #c62828; color: #fff; font-size: 20rpx; padding: 2rpx 12rpx; border-radius: 500rpx; }
+.fc-info { flex: 1; }
+.airline { font-size: 28rpx; font-weight: 500; display: block; }
+.fno { font-size: 24rpx; color: #666; margin-left: 4rpx; }
+.tag { display: inline-block; font-size: 20rpx; padding: 2rpx 12rpx; border-radius: 500rpx; margin-left: 4rpx; }
+.tag-direct { background: #e8f5e9; color: #2e7d32; }
+.tag-transfer { background: #fff3e0; color: #e65100; }
+.fc-price { text-align: right; flex: 0 0 auto; }
+.price-num { font-size: 36rpx; font-weight: 700; color: #c62828; display: block; }
+.price-label { font-size: 20rpx; color: #999; display: block; }
+
+.fc-time-row { display: flex; align-items: center; margin-bottom: 12rpx; }
+.fc-time-item { flex: 1; }
+.fc-time-item.right { text-align: right; }
+.big-time { font-size: 36rpx; font-weight: 600; display: block; }
+.airport-code { font-size: 20rpx; color: #999; }
+.city-label { font-size: 22rpx; color: #999; margin-top: 2rpx; display: block; }
+.fc-duration { flex: 0 0 120rpx; text-align: center; }
+.dur-text { font-size: 22rpx; color: #999; display: block; margin-bottom: 4rpx; }
+.dur-line { height: 2rpx; background: #e0e0e0; margin: 0 auto; width: 80rpx; }
+
+.fc-fee-row { display: flex; justify-content: space-between; font-size: 22rpx; color: #999; padding-top: 12rpx; border-top: 2rpx solid #f0f0f0; }
+.fc-source { color: #FF6A00; }
+
+.btn-book { margin-top: 16rpx; background: #FF6A00; color: #fff; border-radius: 500rpx; font-size: 28rpx; padding: 18rpx; text-align: center; width: 100%; }
+.btn-book:active { opacity: 0.8; }
+
+.empty-state { text-align: center; padding: 120rpx 0; }
+.empty-text { font-size: 28rpx; color: #999; }

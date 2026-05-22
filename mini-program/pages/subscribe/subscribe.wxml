@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="card">
+    <text class="section-title">监控状态</text>
+    <view class="status-row">
+      <view class="status-dot online"></view>
+      <text class="status-text">云服务 24小时在线</text>
+    </view>
+    <view class="status-desc">数据每30分钟自动更新，无需手动操作</view>
+  </view>
+
+  <view class="card">
+    <text class="section-title">监控规则</text>
+    <view class="rule-item">
+      <text class="rule-label">航线</text>
+      <text class="rule-value">深圳 ↔ 北京（双向）</text>
+    </view>
+    <view class="rule-item">
+      <text class="rule-label">监控频率</text>
+      <text class="rule-value">每 30 分钟</text>
+    </view>
+    <view class="rule-item">
+      <text class="rule-label">数据来源</text>
+      <text class="rule-value">携程</text>
+    </view>
+    <view class="rule-item">
+      <text class="rule-label">价格上限</text>
+      <text class="rule-value">含税 ≤ ¥2,000</text>
+    </view>
+  </view>
+</view>

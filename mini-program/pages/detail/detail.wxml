@@ -1,0 +1,75 @@
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-header card">
+    <text class="page-title">{{origin}} → {{destination}}</text>
+    <text class="page-date">{{date}}</text>
+  </view>
+
+  <!-- 当日最低价（可预订） -->
+  <view class="lowest-banner" wx:if="{{lowest}}" bindtap="onBookLowest" data-url="{{lowest.booking_url}}" data-flight_date="{{lowest.flight_date}}" data-flight_number="{{lowest.flight_number}}" data-source="{{lowest.source}}" data-platform="{{util.getSourceTag(lowest.source)}}">
+    <view class="lb-left">
+      <text class="lb-label">当日最低价 · 点击预订</text>
+      <text class="lb-price">{{lowest._priceText}}</text>
+      <text class="lb-fee">{{lowest._feeText}}</text>
+    </view>
+    <view class="lb-right">
+      <text class="lb-airline">{{lowest.airline}}</text>
+      <text class="lb-flight">{{lowest.flight_number}}</text>
+      <text class="lb-time">{{lowest.departure_time}} - {{lowest.arrival_time}}</text>
+      <text class="lb-book-btn">去携程预订 →</text>
+    </view>
+  </view>
+
+  <!-- 全部航班列表 -->
+  <view class="section-title">全部航班（{{flights.length}}个）</view>
+
+  <view wx:for="{{flights}}" wx:for-item="ft" wx:for-index="i" wx:key="id" class="flight-card card">
+    <view class="fc-top">
+      <view class="fc-rank" wx:if="{{i === 0}}">
+        <text class="rank-badge">最低价</text>
+      </view>
+      <view class="fc-info">
+        <text class="airline">{{ft.airline}}</text>
+        <text class="fno">{{ft.flight_number}}</text>
+        <text class="tag {{ft.stops === 0 ? 'tag-direct' : 'tag-transfer'}}">{{ft.stops === 0 ? '直飞' : ft.stops + '次中转'}}</text>
+      </view>
+      <view class="fc-price">
+        <text class="price-num">{{ft._priceText}}</text>
+        <text class="price-label">含税总价</text>
+      </view>
+    </view>
+
+    <view class="fc-time-row">
+      <view class="fc-time-item">
+        <text class="big-time">{{ft.departure_time}}</text>
+        <text class="airport-code" wx:if="{{ft.airport}}">{{ft.airport}}</text>
+        <text class="city-label">{{origin}}</text>
+      </view>
+      <view class="fc-duration">
+        <text class="dur-text">{{ft.duration}}</text>
+        <view class="dur-line"></view>
+      </view>
+      <view class="fc-time-item right">
+        <text class="big-time">{{ft.arrival_time}}</text>
+        <text class="city-label">{{destination}}</text>
+      </view>
+    </view>
+
+    <view class="fc-fee-row">
+      <text>{{ft._feeText}}</text>
+      <text class="fc-source">{{util.getSourceTag(ft.source)}}</text>
+    </view>
+
+    <button class="btn-book" bindtap="onPlatformBook"
+      data-url="{{ft.booking_url}}"
+      data-flight_date="{{ft.flight_date}}"
+      data-flight_number="{{ft.flight_number}}"
+      data-source="{{ft.source}}"
+      data-platform="{{util.getSourceTag(ft.source)}}">去{{util.getSourceTag(ft.source)}}预订</button>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{flights.length === 0}}" class="empty-state">
+    <text class="empty-text">该日暂无航班数据</text>
+  </view>
+</view>

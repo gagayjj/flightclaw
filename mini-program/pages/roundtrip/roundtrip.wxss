@@ -1,0 +1,41 @@
+.top-bar { text-align: center; padding: 24rpx; }
+.route-title { font-size: 34rpx; font-weight: 600; color: #333; }
+.budget-hint { font-size: 26rpx; color: #999; margin-top: 8rpx; }
+
+.loading { text-align: center; padding: 80rpx 0; color: #999; font-size: 28rpx; }
+.loading-spinner { display: inline-block; width: 48rpx; height: 48rpx; border: 4rpx solid #e0e0e0; border-top-color: #1a73e8; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 16rpx; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.section-header { display: flex; justify-content: space-between; align-items: center; padding: 24rpx 16rpx 8rpx; }
+.section-title { font-size: 28rpx; font-weight: 600; }
+.section-count { font-size: 24rpx; color: #999; }
+
+.deal-card { border-left: 8rpx solid #e0e0e0; margin-bottom: 20rpx; }
+.deal-card:first-of-type { border-left-color: #c62828; }
+
+.deal-header { display: flex; align-items: center; gap: 16rpx; margin-bottom: 20rpx; padding-bottom: 16rpx; border-bottom: 2rpx solid #f0f0f0; }
+.deal-total { font-size: 36rpx; font-weight: 700; }
+.budget-ok .deal-total { color: #c62828; }
+.deal-stay { font-size: 24rpx; color: #666; background: #f5f5f5; padding: 4rpx 12rpx; border-radius: 500rpx; }
+.tag-budget { font-size: 22rpx; color: #fff; background: #c62828; padding: 4rpx 12rpx; border-radius: 500rpx; margin-left: auto; }
+
+.deal-leg { display: flex; align-items: center; flex-wrap: wrap; margin-bottom: 16rpx; padding: 12rpx; background: #fafafa; border-radius: 12rpx; }
+.leg-label { display: flex; align-items: center; gap: 6rpx; flex: 1 1 auto; min-width: 0; overflow: hidden; }
+.leg-icon { font-size: 24rpx; color: #1a73e8; flex-shrink: 0; }
+.leg-route { font-size: 24rpx; color: #666; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.leg-price { font-size: 26rpx; font-weight: 600; color: #333; margin-left: auto; flex-shrink: 0; }
+.leg-flight { flex: 1 1 100%; text-align: center; margin-top: 4rpx; }
+.flight-info { font-size: 24rpx; color: #333; display: block; }
+.flight-time { font-size: 22rpx; color: #999; }
+.btn-view { font-size: 22rpx; color: #1a73e8; background: none; border: 2rpx solid #1a73e8; border-radius: 500rpx; padding: 4rpx 16rpx; flex-shrink: 0; }
+.leg-btns { display: flex; gap: 6rpx; flex: 0 0 auto; margin-left: 8rpx; flex-shrink: 0; }
+.btn-book-leg { font-size: 22rpx; color: #fff; background: #FF6A00; border: none; border-radius: 500rpx; padding: 4rpx 16rpx; line-height: 1.8; flex-shrink: 0; }
+.btn-book-leg:active { opacity: 0.8; }
+
+.empty-state { text-align: center; padding: 120rpx 0; }
+.empty-text { font-size: 28rpx; color: #999; display: block; }
+.empty-hint { font-size: 24rpx; color: #ccc; margin-top: 8rpx; display: block; }
+.btn-primary { background: #1a73e8; color: #fff; border-radius: 500rpx; font-size: 28rpx; padding: 20rpx 48rpx; margin-top: 32rpx; display: inline-block; }
+
+.refresh-bar { text-align: center; padding: 24rpx 0 48rpx; }
+.btn-refresh { background: #f0f0f0; color: #333; border-radius: 500rpx; font-size: 26rpx; padding: 16rpx 48rpx; display: inline-block; }

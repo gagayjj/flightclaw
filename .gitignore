@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+
+# Env
+.env
+
+# Data
+data/*.db
+data/*.sqlite
+data/batches/
+*.db
+*.sqlite
+data/cloud_import_*.json
+data/import_*.json
+data/import_*.jsonl
+data/price_records.json
+data/roundtrip_deals.json
+data/test_*.json
+data/test_*.jsonl
+
+# PID files
+*.pid
+
+# Logs
+logs/
+
+# Screenshots
+screenshots/
+
+# CDP scripts
+cdp_*.js
+cdp_*.py
+
+# Tunnel scripts (local-only, not needed on GitHub)
+run-tunnel.sh
+start.sh
+stop-persist.sh
+start-persist.sh
+tunnel-manager.sh
+tunnel-watchdog.sh
+
+# Other local-only files
+flightclaw/
+sync-to-cloud.py
+.bore.pid
+.localtunnel.pid
+.ngrok.pid
+.ssh_tunnel.pid
+.tunnel.pid
+.tunnel_url.txt
+.watchdog.pid
+.caffeinate.pid
+.devtools.pid
+收费
+
+# Claude local settings
+.claude/
+
+# Mini-program local dev files
+mini-program/cloudfunctions/
+mini-program/project.private.config.json
+mini-program/实时捕捉深圳↔北京低价机票

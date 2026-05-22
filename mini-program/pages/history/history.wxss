@@ -1,0 +1,24 @@
+.container { padding: 16rpx; }
+.section-title { font-size: 30rpx; font-weight: 600; display: block; margin-bottom: 20rpx; }
+.trend-item { display: flex; align-items: center; margin-bottom: 12rpx; }
+.trend-date { width: 160rpx; font-size: 24rpx; color: #666; flex-shrink: 0; }
+.trend-bar-bg { flex: 1; height: 40rpx; background: #f0f0f0; border-radius: 8rpx; position: relative; overflow: hidden; margin: 0 12rpx; }
+.trend-bar { height: 100%; background: linear-gradient(90deg, #4caf50, #ff9800, #f44336); border-radius: 8rpx; display: flex; align-items: center; justify-content: flex-end; padding-right: 8rpx; min-width: 80rpx; }
+.trend-price { font-size: 20rpx; color: #fff; font-weight: 600; }
+.trend-avg { width: 100rpx; font-size: 22rpx; color: #999; text-align: right; flex-shrink: 0; }
+.trend-legend { text-align: center; font-size: 22rpx; color: #999; margin-top: 16rpx; }
+.rank-item { display: flex; align-items: center; padding: 16rpx 0; border-bottom: 2rpx solid #f5f5f5; }
+.rank-num { width: 60rpx; font-size: 28rpx; font-weight: 600; text-align: center; }
+.rank-info { flex: 1; margin: 0 12rpx; }
+.rank-date { font-size: 26rpx; font-weight: 500; display: block; }
+.rank-flight { font-size: 22rpx; color: #666; }
+.rank-source { font-size: 20rpx; color: #999; }
+.rank-price { font-size: 32rpx; font-weight: 700; }
+.rank-first { color: #c62828; }
+.btn-rank-book { flex: 0 0 auto; background: #FF6A00; color: #fff; border-radius: 500rpx; font-size: 22rpx; padding: 8rpx 20rpx; margin-left: 8rpx; line-height: 1.6; }
+.btn-rank-book:active { opacity: 0.8; }
+.trend-item:active { opacity: 0.6; }
+.rank-item:active { opacity: 0.6; }
+.stat-row { display: flex; justify-content: space-between; padding: 12rpx 0; border-bottom: 2rpx solid #f5f5f5; }
+.stat-label { font-size: 26rpx; color: #333; }
+.stat-value { font-size: 26rpx; color: #666; }

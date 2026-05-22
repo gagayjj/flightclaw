@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="card">
+    <text class="section-title">{{directionLabel}} 每日最低价趋势</text>
+    <view class="trend-list">
+      <view wx:for="{{trend}}" wx:key="date" class="trend-item" bindtap="onTrendDetail" data-date="{{item.date}}">
+        <text class="trend-date">{{item.date}}</text>
+        <view class="trend-bar-bg">
+          <view class="trend-bar" style="width: {{(item.max - minPrice) / range * 100 > 0 ? ((item.min - minPrice) / range * 100) + '%' : '100%'}};">
+            <text class="trend-price">{{item._minText}}</text>
+          </view>
+        </view>
+        <text class="trend-avg">均¥{{item.avg}}</text>
+      </view>
+    </view>
+    <view class="trend-legend">
+      <text class="legend-text">最低 ¥{{minPrice}}  ~  最高 ¥{{maxPrice}}</text>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{lowestPrices.length > 0}}">
+    <text class="section-title">各日最低价排名</text>
+    <view wx:for="{{lowestPrices}}" wx:key="flight_date" class="rank-item">
+      <text class="rank-num {{item.total_price === lowestGlobal ? 'rank-first' : ''}}">{{item.total_price === lowestGlobal ? '🏆' : (index < 3 ? '🥈' : (index + 1))}}</text>
+      <view class="rank-info" bindtap="onViewDetail" data-date="{{item.flight_date}}" data-origin="{{origin}}" data-destination="{{destination}}">
+        <text class="rank-date">{{item.flight_date}}</text>
+        <text class="rank-flight">{{item.airline}} {{item.flight_number}}</text>
+        <text class="rank-source">{{item.source}}</text>
+      </view>
+      <text class="rank-price {{item.total_price === lowestGlobal ? 'rank-first' : ''}}">{{item._priceText}}</text>
+      <button class="btn-rank-book" bindtap="onPlatformBook"
+        data-url="{{util.getBookingUrl(item.source, origin, destination, item.flight_date, item.flight_number)}}"
+        data-flight_date="{{item.flight_date}}"
+        data-flight_number="{{item.flight_number}}"
+        data-source="{{item.source}}"
+        data-platform="{{util.getSourceTag(item.source)}}">{{util.getSourceTag(item.source)}}预订</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="section-title">平台数据统计</text>
+    <view wx:if="{{stats}}">
+      <view class="stat-row">
+        <text class="stat-label">已监控航班总数</text>
+        <text class="stat-value">{{stats.total_records}}</text>
+      </view>
+      <view wx:for="{{stats.sources}}" wx:key="*this" class="stat-row">
+        <text class="stat-label">来源: {{item.name}}</text>
+        <text class="stat-value">{{item.count}} 条</text>
+      </view>
+    </view>
+  </view>
+</view>
